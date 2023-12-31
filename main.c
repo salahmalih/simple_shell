@@ -1,0 +1,35 @@
+#include "shell.h"
+/**
+ * main - Entry point for the shell program.
+ * @ac: The number of arguments passed to the program.
+ * @argv: An array of strings containing the arguments.
+ *
+ * Return: The exit status of the shell program.
+ */
+int main(int ac, char **argv)
+{
+
+	char *line;
+	int status = 0, index = 0;
+	char **tokens;
+
+	(void)ac;
+	(void)argv;
+	while (1)
+	{
+	line = read_line();
+	if (!line)
+	{
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, "\n", 1);
+		}
+		return (status);
+	}
+	index++;
+	tokens = tokenizer(line, " \n\t");
+	status = _execute(tokens, argv, index);
+	free(line);
+	}
+
+}
