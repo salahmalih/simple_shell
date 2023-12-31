@@ -9,7 +9,7 @@
 int main(int ac, char **argv)
 {
 
-	char *line;
+	char *line, *new_env = NULL;
 	int status = 0, index = 0;
 	char **tokens;
 
@@ -24,11 +24,19 @@ int main(int ac, char **argv)
 		{
 			write(STDOUT_FILENO, "\n", 1);
 		}
+		free(new_env);
 		return (status);
 	}
 	index++;
 	tokens = tokenizer(line, " \n\t");
-	status = _execute(tokens, argv, index);
+	if (tokens != NULL && tokens[0] != NULL && is_builtin(tokens[0]))
+    {
+        handle_builtin(tokens, argv, &status, index, &new_env);
+    }
+    else
+    {
+        status = _execute(tokens, argv, index);
+    }
 	free(line);
 	}
 

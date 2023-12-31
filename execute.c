@@ -17,7 +17,7 @@ int _execute(char **cmd_info, char **argv, int idx) {
 	{
 		write_error(argv[0], idx, cmd_info[0], ": not found\n");
 		freearrayStr(cmd_info);
-		return (status);
+		return (127);
 	}
 
 	child = fork();
