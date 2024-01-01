@@ -2,7 +2,7 @@
 
 /**
  * is_builtin - checks if a command is a built-in command
- * @cmd: command to check
+ * @command: command to check
  *
  * Return: 1 if the command is a built-in, 0 otherwise
  */
