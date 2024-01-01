@@ -6,6 +6,7 @@
  *
  * Return: The value of the environment variable or NULL if not found.
  */
+
 char *_getenv(const char *name)
 {
 	char **env = environ;
@@ -27,6 +28,7 @@ char *_getenv(const char *name)
  *
  * Return: A pointer to the read line or NULL on failure.
  */
+
 char *read_line()
 {
 	size_t char_c = 0;

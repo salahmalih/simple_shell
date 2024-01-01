@@ -39,5 +39,4 @@ int main(int ac, char **argv)
     }
 	free(line);
 	}
-
 }

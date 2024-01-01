@@ -1,10 +1,12 @@
 #include "shell.h"
+
 /**
  * _atoi - converts a string to an integer
  * @s: string to be converted
  *
  * Return: the int converted from the string
  */
+
 int _atoi(char *s)
 {
 	int i, d, n, len, f, digit;
@@ -70,6 +72,7 @@ char *_itoa(int n)
 
 	return (_strdup(buffer));
 }
+
 /*
  * freearrayStr - Frees the memory allocated for an array of strings.
  *
@@ -80,6 +83,7 @@ char *_itoa(int n)
  * for the array itself. After freeing, it sets each element to NULL and
  * the array pointer to NULL to avoid dangling pointers.
  */
+
 void freearrayStr(char **arr)
 {
 	int i = 0;

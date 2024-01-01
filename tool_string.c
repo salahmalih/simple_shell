@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * _strdup - function that returns a pointer,
  * to a newly allocated space in memory,
@@ -31,6 +32,7 @@ char *_strdup(char *str)
 
 	return (pnt);
 }
+
 /**
  * *_strcpy - copies the string pointed to by src
  * including the terminating null byte (\0)
@@ -40,6 +42,7 @@ char *_strdup(char *str)
  *
  * Return: the pointer to dest
  */
+
 char *_strcpy(char *dest, char *src)
 {
 	int len, i;
@@ -67,6 +70,7 @@ char *_strcpy(char *dest, char *src)
  *
  * Return: a pointer to the resulting string
  */
+
 char *_strcat(char *dest, char *src)
 {
 	int i, j;
