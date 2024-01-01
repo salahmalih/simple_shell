@@ -19,17 +19,19 @@ char *get_command(char *cmd_line);
 int _execute(char **cmd_info, char **argv, int idx);
 void freearrayStr(char **arr);
 char *_getenv(const char *name);
-void write_error(char *name, int idx, char *cmd, char * mssg);
+void write_error(char *name, int idx, char *cmd, char *mssg);
 
 /*builtin*/
 int is_builtin(char *command);
-void handle_builtin(char **cmd, char **argv, int *status, int idx, char **new_env);
+void handle_builtin(char **cmd, char **argv, int *status, int idx,
+char **new_env);
 void exit_builtin(char **command,char *name, int *status, int idx);
 void print_env(int *status);
 void _unsetenv(char **command, int *status);
 void _setenv(char **command, char *name, int *status, int idx);
 void set_wd_env(char *env_key, char *env_value, char **new_env);
-void change_directory(char **command, char **argv, int *status, int idx, char **new_env);
+void change_directory(char **command, char **argv, int *status, int idx,
+char **new_env);
 
 /* STRING */
 char *_strdup(char *str);

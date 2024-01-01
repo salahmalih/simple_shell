@@ -1,5 +1,15 @@
 #include "shell.h"
 
+/**
+ * exit_builtin - Custom implementation of the exit
+ * built-in command.
+ *
+ * @command: An array of strings representing the
+ * command and its arguments.
+ * @name: The name of the program or shell.
+ * @status: A pointer to the exit status variable.
+ * @idx: The index of the command in the input.
+ */
 void exit_builtin(char **command,char *name, int *status, int idx)
 {
 	int exit_status = (*status);
@@ -21,7 +31,26 @@ void exit_builtin(char **command,char *name, int *status, int idx)
 	freearrayStr(command);
 	exit(exit_status);
 }
-
+/**
+ * change_directory - Change the current
+ * working directory.
+ * @command: Array of command and arguments.
+ * @argv: Array of program arguments.
+ * @status: Pointer to the exit status of the shell.
+ * @idx: Index of the command in the command history.
+ * @new_env: Array of environment variables to update.
+ *
+ * This function handles the 'cd' command to change
+ * the current working directory.
+ * It supports three cases: no arguments
+ * (changes to the home directory),
+ * '-' as an argument (changes to the previous
+ * working directory), and
+ * a specified directory path.
+ *
+ * @return: No explicit return value. Updates
+ * status and new_env.
+ */
 void change_directory(char **command, char **argv, int *status, int idx, char **new_env)
 {
 	char *HOME, *OLDPWD, current_wd[1024];
