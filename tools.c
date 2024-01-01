@@ -70,7 +70,16 @@ char *_itoa(int n)
 
 	return (_strdup(buffer));
 }
-
+/*
+ * freearrayStr - Frees the memory allocated for an array of strings.
+ *
+ * @arr: The array of strings to be freed.
+ *
+ * This function iterates through each string in the array and frees the
+ * memory allocated for each string. Then, it frees the memory allocated
+ * for the array itself. After freeing, it sets each element to NULL and
+ * the array pointer to NULL to avoid dangling pointers.
+ */
 void freearrayStr(char **arr)
 {
 	int i = 0;
@@ -104,3 +113,4 @@ int is_positive_number(char *str)
 	}
 	return (1);
 }
+ .
