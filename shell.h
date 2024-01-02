@@ -20,7 +20,7 @@ int _execute(char **cmd_info, char **argv, int idx);
 void freearrayStr(char **arr);
 char *_getenv(const char *name);
 void write_error(char *name, int idx, char *cmd, char *mssg);
-
+ssize_t _getline(char **buffer, size_t *len, FILE *stream);
 /*builtin*/
 int is_builtin(char *command);
 void handle_builtin(char **cmd, char **argv, int *status, int idx,

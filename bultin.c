@@ -29,10 +29,10 @@ int is_builtin(char *command)
  * @cmd: built-in command
  * @argv: array of arguments
  * @status: exit status
- * @param idx: The index of the command in the command array.
- * @param new_env: The environment variable as an array
+ * @idx: The index of the command in the command array.
+ * @new_env: The environment variable as an array
  * of strings.
- * 
+ *
  * Return: exit status
  */
 

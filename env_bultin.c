@@ -7,13 +7,15 @@
  * @status: Pointer to the exit status
  * @idx: Index of the command in the history
  */
-void _setenv(char **command, char *name, int *status, int idx) {
+
+void _setenv(char **command, char *name, int *status, int idx)
+{
 	int i;
 	char *new, *tmp = NULL;
 	char **env = environ;
-	(void)idx;
 
-  	if (!command[1] || !command[2])
+	(void)idx;
+	if (!command[1] || !command[2])
 	{
 		(*status) = 0;
 		freearrayStr(command);
@@ -67,6 +69,7 @@ void _unsetenv(char **command, int *status)
 	int i;
 	char *tmp, *key;
 
+
 	if (command[1])
 	{
 		for (i = 0; environ[i]; i++)
@@ -81,6 +84,7 @@ void _unsetenv(char **command, int *status)
 			free(tmp);
 			tmp = NULL;
 		}
+
 		while (environ[i])
 		{
 			environ[i] = environ[i + 1];

@@ -51,7 +51,8 @@ void exit_builtin(char **command,char *name, int *status, int idx)
  * @return: No explicit return value. Updates
  * status and new_env.
  */
-void change_directory(char **command, char **argv, int *status, int idx, char **new_env)
+void change_directory(char **command, char **argv, int *status, int idx,
+char **new_env)
 {
 	char *HOME, *OLDPWD, current_wd[1024];
 

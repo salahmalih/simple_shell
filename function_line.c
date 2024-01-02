@@ -39,7 +39,7 @@ char *read_line()
 	{
 		write(1, "$ ", 2);
 	}
-	char_c = getline(&buffer, &lent_buffer, stdin);
+	char_c = _getline(&buffer, &lent_buffer, stdin);
 	if ((int)char_c == -1)
 	{
 		free(buffer);
@@ -48,4 +48,43 @@ char *read_line()
 	}
 	buffer[char_c - 1] = '\0';
 	return (buffer);
+}
+/**
+ * set_wd_env - set environment for PWD and OLDPWD.
+ * @env_key: environment key.
+ * @env_value: environment value.
+ * @new_env: new_environment variable.
+ * Return: (void).
+*/
+void set_wd_env(char *env_key, char *env_value, char **new_env)
+{
+	int i;
+	char *key, *variable, *tmp, *new;
+
+	for (i = 0; environ[i]; i++)
+	{
+		tmp = _strdup(environ[i]);
+		key = _strtok(tmp, "=");
+		if (strcmp(key, env_key) == 0)
+		{
+			variable = _strtok(NULL, "\n");
+			if (strcmp(variable, env_value) == 0)
+			{
+				free(tmp);
+				return;
+			}
+			_strcpy(environ[i], env_key);
+			_strcat(environ[i], "=");
+			_strcat(environ[i], env_value);
+			free(tmp);
+			return;
+		}
+		free(tmp), tmp = NULL;
+	}
+	new = malloc(_strlen(env_key) + _strlen(env_value) + 2);
+	_strcpy(new, env_key);
+	_strcat(new, "=");
+	_strcat(new, env_value);
+	environ[i] = new, environ[i + 1] = NULL;
+	(*new_env) = new;
 }
