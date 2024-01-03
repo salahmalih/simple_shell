@@ -17,26 +17,27 @@ int main(int ac, char **argv)
 	(void)argv;
 	while (1)
 	{
-	line = read_line();
-	if (!line)
-	{
-		if (isatty(STDIN_FILENO))
+		line = read_line();
+		if (!line)
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			if (isatty(STDIN_FILENO))
+			{
+				write(STDOUT_FILENO, "\n", 1);
+			}
+			free(new_env);
+			return (status);
 		}
-		free(new_env);
-		return (status);
+		index++;
+		tokens = tokenizer(line, " \n\t");
+		if (tokens != NULL && tokens[0] != NULL && is_builtin(tokens[0]))
+		{
+			handle_builtin(tokens, argv, &status, index, &new_env);
+		}
+		else
+		{
+			status = _execute(tokens, argv, index);
+		}
+		free(line);
 	}
-	index++;
-	tokens = tokenizer(line, " \n\t");
-	if (tokens != NULL && tokens[0] != NULL && is_builtin(tokens[0]))
-    {
-        handle_builtin(tokens, argv, &status, index, &new_env);
-    }
-    else
-    {
-        status = _execute(tokens, argv, index);
-    }
-	free(line);
-	}
+	return (status);
 }

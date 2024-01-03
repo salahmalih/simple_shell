@@ -53,8 +53,6 @@ void _setenv(char **command, char *name, int *status, int idx)
 	env[i] = new;
 	env[i+1] = NULL;
 	(*status) =0;
-	free(new);
-	new = NULL;
 }
 /**
  * _unsetenv - Remove an environment variable.

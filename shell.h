@@ -46,4 +46,5 @@ char *_strtok(char *str, const char *delim);
 int _atoi(char *str);
 char *_itoa(int n);
 int is_positive_number(char *str);
+
 #endif
