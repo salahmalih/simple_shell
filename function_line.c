@@ -64,10 +64,10 @@ void set_wd_env(char *env_key, char *env_value, char **new_env)
 	for (i = 0; environ[i]; i++)
 	{
 		tmp = _strdup(environ[i]);
-		key = _strtok(tmp, "=");
+		key = strtok(tmp, "=");
 		if (strcmp(key, env_key) == 0)
 		{
-			variable = _strtok(NULL, "\n");
+			variable = strtok(NULL, "\n");
 			if (strcmp(variable, env_value) == 0)
 			{
 				free(tmp);

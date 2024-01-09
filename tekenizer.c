@@ -16,11 +16,11 @@ char **tokenizer(char *line, char *delimiter)
 	if (!line)
 		return (NULL);
 	tmp = _strdup(line);
-	token = _strtok(tmp, delimiter);
+	token = strtok(tmp, delimiter);
 	while (token)
     {
 		count++;
-		token = _strtok(NULL, delimiter);
+		token = strtok(NULL, delimiter);
 	}
 	free(tmp);
 	tmp = NULL;
@@ -30,11 +30,11 @@ char **tokenizer(char *line, char *delimiter)
 		return (NULL);
 	}
 	tmp = _strdup(line);
-	token = _strtok(tmp, delimiter);
+	token = strtok(tmp, delimiter);
 	while (token)
     {
 		command[i] = _strdup(token);
-		token = _strtok(NULL, delimiter);
+		token = strtok(NULL, delimiter);
 		i++;
 	}
 	free(tmp);
@@ -71,7 +71,7 @@ char *get_command(char *cmd_line)
 	path = _strdup(_getenv("PATH"));
 	if (!path)
 		return (NULL);
-	tokens = _strtok(path, ":");
+	tokens = strtok(path, ":");
 	while (tokens)
 	{
 		full_cmd = malloc((_strlen(tokens) + _strlen(cmd_line) + 2) * sizeof(char *));
@@ -86,7 +86,7 @@ char *get_command(char *cmd_line)
 				return (full_cmd);
 			}
 			free(full_cmd);
-			tokens = _strtok(NULL, ":");
+			tokens = strtok(NULL, ":");
         }
 	}
 	free(path);

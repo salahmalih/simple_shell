@@ -59,7 +59,7 @@ char **new_env)
 	getcwd(current_wd, 1024);
 	if (!command[1])
 	{
-		HOME = _getenv("HOME");
+		HOME = getenv("HOME");
 		if (!HOME)
 		{
 			freearrayStr(command), (*status) = 0;
