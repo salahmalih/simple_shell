@@ -73,7 +73,7 @@ void _unsetenv(char **command, int *status)
 		for (i = 0; environ[i]; i++)
 		{
 			tmp = _strdup(environ[i]);
-			key = strtok(tmp, "=");
+			key = _strtok(tmp, "=");
 			if (strcmp(command[1], key) == 0)
 			{
 				free(tmp), tmp = NULL;

@@ -27,8 +27,8 @@ void _alias(char **command, int *status, list_t **head)
 		return;
 	}
 
-	name = strtok(alias_str, "=");
-	value = strtok(NULL, "=");
+	name = _strtok(alias_str, "=");
+	value = _strtok(NULL, "=");
 
     if (!name || !value)
     {
