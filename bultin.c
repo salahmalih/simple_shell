@@ -12,7 +12,7 @@ int is_builtin(char *command)
 	int i;
 	char *builtins[] = {
 		"exit", "env", "setenv",
-		"unsetenv", "cd",
+		"unsetenv", "cd","alias",
 		NULL
 	};
 
@@ -37,7 +37,7 @@ int is_builtin(char *command)
  */
 
 void handle_builtin(char **cmd, char **argv, int *status, int idx,
-char **new_env)
+char **new_env, list_t **head)
 {
 	if (strcmp(cmd[0], "exit") == 0)
 		exit_builtin(cmd, argv[0], status, idx);
@@ -49,5 +49,7 @@ char **new_env)
 		_unsetenv(cmd, status);
 	else if (strcmp(cmd[0], "cd") == 0)
 		change_directory(cmd, argv, status, idx, new_env);
+	else if (strcmp(cmd[0], "alias") == 0)
+		_alias(cmd, status, head);
 	freearrayStr(cmd);
 }

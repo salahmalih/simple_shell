@@ -13,6 +13,13 @@
 extern char **environ;
 #define BUFFER_SIZE 1024
 
+typedef struct list_s
+{
+    char *name;
+    char *value;
+    struct list_s *next;
+} list_t;
+
 char *read_line();
 char **tokenizer(char *line, char *delimiter);
 char *get_command(char *cmd_line);
@@ -24,7 +31,7 @@ ssize_t _getline(char **buffer, size_t *len, FILE *stream);
 /*builtin*/
 int is_builtin(char *command);
 void handle_builtin(char **cmd, char **argv, int *status, int idx,
-char **new_env);
+char **new_env, list_t **head);
 void exit_builtin(char **command,char *name, int *status, int idx);
 void print_env(int *status);
 void _unsetenv(char **command, int *status);
@@ -32,7 +39,7 @@ void _setenv(char **command, char *name, int *status, int idx);
 void set_wd_env(char *env_key, char *env_value, char **new_env);
 void change_directory(char **command, char **argv, int *status, int idx,
 char **new_env);
-
+void _alias(char **command, int *status,list_t **head);
 /* STRING */
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
@@ -46,5 +53,13 @@ char *_strtok(char *str, const char *delim);
 int _atoi(char *str);
 char *_itoa(int n);
 int is_positive_number(char *str);
+/*linkd liste*/
+list_t *createNode(char *name, char *value);
+void addNode(list_t **head, char *name, char *value);
+char *getValueOfNode(list_t *head, char *name);
+int searchNode(list_t *head, char *name);
+void updateNode(list_t *head, char *name, char *newValue);
+void printNodes(list_t *head);
+void freeList(list_t *head);
 
 #endif
