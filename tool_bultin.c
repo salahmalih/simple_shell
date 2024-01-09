@@ -40,14 +40,6 @@ void exit_builtin(char **command,char *name, int *status, int idx)
  * @idx: Index of the command in the command history.
  * @new_env: Array of environment variables to update.
  *
- * This function handles the 'cd' command to change
- * the current working directory.
- * It supports three cases: no arguments
- * (changes to the home directory),
- * '-' as an argument (changes to the previous
- * working directory), and
- * a specified directory path.
- *
  * @return: No explicit return value. Updates
  * status and new_env.
  */
