@@ -39,7 +39,7 @@ char *read_line()
 	{
 		write(1, "$ ", 2);
 	}
-	char_c = _getline(&buffer, &lent_buffer, stdin);
+	char_c = getline(&buffer, &lent_buffer, stdin);
 	if ((int)char_c == -1)
 	{
 		free(buffer);
